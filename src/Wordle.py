@@ -1,14 +1,12 @@
 from tkinter import *
+from string import ascii_lowercase as lower
 import random, json, re
 
 class Wordle: 
     def __init__(self, root):
-        self.tklabels, self.helper, self.tkbuttons, self.guesses = [], [], [], []
-        self.unusedLetters = []
+        self.tklabels, self.helper, self.tkbuttons, self.guesses, self.unusedLetters = [], [], [], [], []
         self.root = root
-        self.index = 0
-        self.restartBool = False
-        self.currentAttempt = 0
+        self.index, self.currentAttempt = 0, 0
         self.randomWord = None
         buttonQ = Button(self.root, text = 'Q', font = 'Sans-Serif 15 bold', fg = 'white', bg = 'black', width = 2, height = 1, command = lambda: Wordle.onClick(self, 0))
         buttonW = Button(self.root, text = 'W', font = 'Sans-Serif 15 bold', fg = 'white', bg = 'black', width = 2, height = 1, command = lambda: Wordle.onClick(self, 1))
@@ -37,7 +35,7 @@ class Wordle:
         buttonN = Button(self.root, text = 'N', font = 'Sans-Serif 15 bold', fg = 'white', bg = 'black', width = 2, height = 1, command = lambda: Wordle.onClick(self, 24))
         buttonM = Button(self.root, text = 'M', font = 'Sans-Serif 15 bold', fg = 'white', bg = 'black', width = 2, height = 1, command = lambda: Wordle.onClick(self, 25))
         self.buttons = [buttonQ,buttonW,buttonE,buttonR,buttonT,buttonY,buttonU,buttonI,buttonO,buttonP,buttonA,buttonS,buttonD,buttonF,buttonG,buttonH,buttonJ,buttonK,buttonL,buttonZ,buttonX,buttonC,buttonV,buttonB,buttonN,buttonM]
-        self.relx, self.rely = [.3, .4, .5, .6, .7], [.05, .15, .25, .35, .45, .55] 
+        self.relx, self.rely = [.3, .4, .5, .6, .7], [.05, .15, .25, .35, .45, .55]
 
     def setRandomWord(self):
         with open('Wordle2\src\words.json') as words:
@@ -45,7 +43,6 @@ class Wordle:
             length = len(words)
             word = words[random.randint(0, length)].upper()
         self.word = word
-        print(self.word)
 
     def check(self):
         colors = []
