@@ -35,7 +35,7 @@ while currentGuessCount != 6:
                         correctCount += 1
                         string += (f' {Style.BRIGHT + Fore.GREEN + i + Fore.WHITE + Style.RESET_ALL} ')
                     else:
-                        string += (f' {Style.BRIGHT + Fore.YELLOW + i + Fore.WHITE + Style.RESET_ALL} ') 
+                        string += (f' {Style.BRIGHT + Fore.YELLOW + i + Fore.WHITE + Style.RESET_ALL} ')
             else:
                 string += (f' {i} ')
                 unusedLetters.append(i)
@@ -49,7 +49,7 @@ while currentGuessCount != 6:
     if valid:
         guesses.append(string)
 
-    print(f'┌{"─" * 15}┐')
+    print(f'{"┌" + Style.BRIGHT}{"─" * 15}┐')
 
     for i in guesses:
         print('│', end = '')
@@ -66,10 +66,12 @@ while currentGuessCount != 6:
     print(f'Letters That Are Not in the Word: ', end = '')
     print(''.join([i for i in unusedLetters]))
 
-    if correctCount == 5:
-        print(Fore.GREEN +'  C O R R E C T' + Fore.WHITE)
-        break
+    # if correctCount == 5:
+    #     print(Fore.GREEN +'  Correct!' + Fore.WHITE)
+    #     break
 
-print(f"THE WORD WAS {word}")
+    if guess in word:
+        print(f"{print(Fore.GREEN +'  Correct!' + Fore.WHITE)}")
+
 
 

@@ -8,11 +8,13 @@ root.title('Wordle')
 root.config(bg = 'black')
 
 wordle = Wordle(root)
+
 wordle.setAndGetLabels()
 wordle.setAndGetButtons()
 wordle.setRandomWord()
 wordle.placeLabels()
 wordle.placeButtons()
+
 root.iconphoto(False, PhotoImage(file='Wordle2\src\download.png'))
 
 root.mainloop() 
