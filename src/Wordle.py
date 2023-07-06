@@ -38,7 +38,7 @@ class Wordle:
         self.relx, self.rely = [.3, .4, .5, .6, .7], [.05, .15, .25, .35, .45, .55]
 
     def setRandomWord(self):
-        with open('Wordle2\src\words.json') as words:
+        with open('src\words.json') as words:
             words = json.load(words)['Words']
             length = len(words)
             word = words[random.randint(0, length)].upper()
